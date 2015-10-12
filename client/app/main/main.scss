@@ -13,13 +13,21 @@
     letter-spacing: -1px;
 }
 
+.row {
+    background-color: #999;
+}
+
 .hero-unit {
     position: relative;
     padding: 30px 15px;
-    color: #F5F5F5;
+    color: #215F1E;
     text-align: center;
     text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
-    background: #4393B9;
+    background: #457E86;
+}
+
+.thing-link {
+    color: black;
 }
 
 .footer {
