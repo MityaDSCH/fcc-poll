@@ -16,7 +16,9 @@ var UserSchema = new Schema({
   provider: String,
   salt: String,
   twitter: {},
-  github: {}
+  github: {},
+
+  polls: [{ type: Schema.Types.ObjectId, ref: 'Story' }]
 });
 
 /**
