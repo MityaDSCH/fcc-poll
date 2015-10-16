@@ -6,6 +6,11 @@ angular.module('fccApp')
     $scope.errors = {};
 
     $scope.register = function(form) {
+
+      console.log(form);
+
+      var a = form;
+
       $scope.submitted = true;
 
       if(form.$valid) {
@@ -17,7 +22,7 @@ angular.module('fccApp')
         .then( function() {
           // Account created, redirect to home
           $location.path('/');
-        })
+        }) 
         .catch( function(err) {
           err = err.data;
           $scope.errors = {};
