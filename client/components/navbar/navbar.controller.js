@@ -20,4 +20,4 @@ angular.module('fccApp')
     $scope.isActive = function(route) {
       return route === $location.path();
     };
-  });
+  }); 

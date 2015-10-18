@@ -63,27 +63,5 @@ angular.module('fccApp')
     $scope.deleteThing = function(thing) {
       $http.delete('/api/things/' + thing._id);
     };
-    var nameWidth = $('name').css('width');
 
-    $('#github').css('width', nameWidth);
-
-    $scope.logoHover = function() {
-      if (!animating) {
-        showName();
-      }
-    };
-
-    $scope.logoExit = function() {
-      if (!animating) {
-        hideName();
-      } else {
-        var intv = setInterval(function() {
-          if (!animating) {
-            hideName();
-            clearInterval(intv);
-            animating = false;
-          }
-        }, 100);
-      }
-    };
   });
