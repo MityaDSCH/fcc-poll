@@ -1,13 +1,11 @@
 'use strict';
-
+ 
 angular.module('fccApp')
   .controller('SignupCtrl', function ($scope, Auth, $location, $window) {
     $scope.user = {};
     $scope.errors = {};
 
     $scope.register = function(form) {
-
-      console.log(form);
 
       var a = form;
 
