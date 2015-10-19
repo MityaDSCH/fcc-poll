@@ -7,6 +7,7 @@
 
 var Thing = require('../api/thing/thing.model');
 var User = require('../api/user/user.model');
+var Poll = require('../api/poll/poll.model');
 
 Thing.find({}).remove(function() {
   Thing.create({
@@ -46,4 +47,27 @@ User.find({}).remove(function() {
       console.log('finished populating users');
     }
   );
+});
+
+Poll.find({}).remove(function() {
+
+  Poll.create({
+    name: "Test Poll",
+    url: "test-poll",
+    creator: "admin@admin.com",
+    active: true,
+    public: true,
+    votes: {
+      "test1": "1",
+      "test2": "2",
+      "test3": "3",
+      "test4": "4",
+      "test5": "1",
+      "test6": "2",
+      "test7": "2",
+      "test8": "1"
+    }
+  }, function() {
+    console.log('finished populating polls');
+  });
 });

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" []>
+<svg version="1.1" id="feynman-logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="700px" height="600px" viewBox="0 0 700 600" style="top:0;right:0;bottom:0;left:0;position:absolute;margin:auto;"
+xml:space="preserve">
+
+  <!-- MW line -->
+  <polyline style="fill:none;stroke:#000000;stroke-width:40px;" points="0,600 200,200 300,400 400,200 500,400 700,0" />
+
+  <!-- Top Dashed Line -->
+  <line style="fill:none;stroke:#000000;stroke-width:40px;" stroke-dasharray="22.36, 22.36" x1="100" y1="0" x2="200" y2="200">
+    <animate attributeName="stroke-dashoffset" from="0" to="223.6" dur="2s" begin="0s" fill="remove" repeatCount="indefinite" />
+  </line>
+
+  <!-- Bottom Dashed Line -->
+  <line style="fill:none;stroke:#000000;stroke-width:40px;" stroke-dasharray="22.36, 22.36" x1="600" y1="600" x2="500" y2="400" clip-path="url(#bottom-dashed-clip)">
+    <animate attributeName="stroke-dashoffset" from="0" to="223.6" dur="2s" begin="0s" fill="remove" repeatCount="indefinite" />
+  </line>
+
+</svg>
