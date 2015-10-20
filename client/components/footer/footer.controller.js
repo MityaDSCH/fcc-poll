@@ -51,17 +51,17 @@ angular.module('fccApp')
 
     $scope.logoHover = function() {
       if (!animating) {
-        showName();
+        $scope.showName();
       }
     };
 
     $scope.logoExit = function() {
       if (!animating) {
-        hideName();
+        $scope.hideName();
       } else {
         var intv = setInterval(function() {
           if (!animating) {
-            hideName();
+            $scope.hideName();
             clearInterval(intv);
             animating = false;
           }
