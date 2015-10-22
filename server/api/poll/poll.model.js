@@ -6,16 +6,20 @@ var mongoose = require('mongoose'),
 var PollSchema = new Schema({
 
   name: {
-  	type: String
+  	type: String,
+    required: true
   },
   username: {
-  	type: String
+  	type: String,
+    required: true
   },
   created_at: String,
   updated_at: String,
 
   url: {
-    type: String
+    type: String,
+    required: true,
+    unique: true
   },
   active: Boolean,
   public: Boolean,

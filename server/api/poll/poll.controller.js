@@ -46,7 +46,7 @@ exports.update = function(req, res) {
 exports.destroy = function(req, res) {
   //if delete path is /all remove all polls
   if (req.params.id === "all") {
-    console.log("all recieved");
+    console.log("delete all");
     Poll.find({}, function(err, polls) {
       if(err) { return handleError(res, err); }
       polls.forEach(function(ele) {
@@ -57,7 +57,7 @@ exports.destroy = function(req, res) {
       });
     });
   } else {
-    
+
     //original delete by id
     Poll.findById(req.params.id, function (err, poll) {
       if(err) { return handleError(res, err); }
