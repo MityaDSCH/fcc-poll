@@ -4,24 +4,23 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 var PollSchema = new Schema({
+
   name: {
-  	type: String,
-  	required: true
+  	type: String
   },
-  url: {
-  	type: String,
-  	required: true,
-  	unique: true
-  },
-  creator: {
-  	type: Number,
-  	ref: "User"
+  username: {
+  	type: String
   },
   created_at: String,
   updated_at: String,
+
+  url: {
+    type: String
+  },
   active: Boolean,
   public: Boolean,
   votes: Object
+
 });
 
 PollSchema.pre('save', function(next) {

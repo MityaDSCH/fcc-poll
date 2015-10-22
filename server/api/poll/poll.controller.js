@@ -44,14 +44,31 @@ exports.update = function(req, res) {
 
 // Deletes a poll from the DB.
 exports.destroy = function(req, res) {
-  Poll.findById(req.params.id, function (err, poll) {
-    if(err) { return handleError(res, err); }
-    if(!poll) { return res.status(404).send('Not Found'); }
-    poll.remove(function(err) {
+  //if delete path is /all remove all polls
+  if (req.params.id === "all") {
+    console.log("all recieved");
+    Poll.find({}, function(err, polls) {
       if(err) { return handleError(res, err); }
-      return res.status(204).send('No Content');
+      polls.forEach(function(ele) {
+        ele.remove(function(err) {
+          if(err) { return handleError(res, err); }
+          return res.status(204).send('No Content');
+        });
+      });
     });
-  });
+  } else {
+    
+    //original delete by id
+    Poll.findById(req.params.id, function (err, poll) {
+      if(err) { return handleError(res, err); }
+      if(!poll) { return res.status(404).send('Not Found'); }
+      poll.remove(function(err) {
+        if(err) { return handleError(res, err); }
+        return res.status(204).send('No Content');
+      });
+    });
+
+  }
 };
 
 function handleError(res, err) {

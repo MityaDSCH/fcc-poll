@@ -15,7 +15,10 @@
           <input type="text" name="name" class="form-control" ng-model="user.name"
                  required/>
           <p class="help-block" ng-show="form.name.$error.required && submitted">
-            A name is required
+            A title is required
+          </p>
+          <p class="help-block" ng-show="form.name.length <= 3 && submitted">
+            Title must be more than 3 characters long
           </p>
         </div>
 
@@ -25,7 +28,7 @@
         </div>
 
         <div>
-          <button class="btn btn-inverse btn-lg btn-login" type="submit">
+          <button class="btn btn-inverse btn-lg" type="submit">
             Submit
           </button>
         </div>
@@ -36,5 +39,5 @@
   </div>
   <hr>
 </div>
-
+ 
 <div ng-include="'components/footer/footer.html'"></div>
