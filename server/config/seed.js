@@ -35,12 +35,14 @@ User.find({}).remove(function() {
   User.create({
     provider: 'local',
     name: 'Test User',
+    username: 'test',
     email: 'test@test.com',
     password: 'test'
   }, {
     provider: 'local',
     role: 'admin',
     name: 'Admin',
+    username: 'admin',
     email: 'admin@admin.com',
     password: 'admin'
   }, function() {
@@ -48,26 +50,3 @@ User.find({}).remove(function() {
     }
   );
 });
-
-// Poll.find({}).remove(function() {
-
-//   Poll.create({
-//     name: "Test Poll",
-//     url: "test-poll",
-//     creator: "admin@admin.com",
-//     active: true,
-//     public: true,
-//     votes: {
-//       "test1": "1",
-//       "test2": "2",
-//       "test3": "3",
-//       "test4": "4",
-//       "test5": "1",
-//       "test6": "2",
-//       "test7": "2",
-//       "test8": "1"
-//     }
-//   }, function() {
-//     console.log('finished populating polls');
-//   });
-// });
