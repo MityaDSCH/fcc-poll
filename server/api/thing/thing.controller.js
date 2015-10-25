@@ -43,7 +43,8 @@ exports.update = function(req, res) {
   Thing.findById(req.params.id, function (err, thing) {
     if (err) { return handleError(res, err); }
     if(!thing) { return res.status(404).send('Not Found'); }
-    var updated = _.merge(thing, req.body);
+    var updated = _.extend(thing, req.body);
+    // Change _.merge to _.extend
     updated.save(function (err) {
       if (err) { return handleError(res, err); }
       return res.status(200).json(thing);

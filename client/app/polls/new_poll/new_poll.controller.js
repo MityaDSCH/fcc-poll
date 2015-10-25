@@ -1,4 +1,4 @@
-angular.module('fccApp').controller('newPollCtrl', function ($scope, Auth, $location, $window) {
+angular.module('fccApp').controller('newPollCtrl', function ($scope, $http) {
 
 	$scope.register = function(form) {
 
