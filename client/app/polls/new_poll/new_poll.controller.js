@@ -3,9 +3,10 @@ angular.module('fccApp').controller('newPollCtrl', function ($scope, Auth, $loca
 	$scope.register = function(form) {
 
 		$scope.submitted = true;
+		console.log('submitted', form.$valid);
 
-		if (form.$vaild) {
-			console.log("hi");
+		if (form.$valid) {
+			console.log("valid");
 		}
 
 	};

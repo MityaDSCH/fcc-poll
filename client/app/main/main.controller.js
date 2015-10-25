@@ -20,4 +20,9 @@ angular.module('fccApp')
       $http.delete('/api/things/' + thing._id);
     };
 
+    $scope.active = null;
+    $scope.makeActive = function() {
+      $scope.active = this.thing;
+    };
+
   });

@@ -10,7 +10,8 @@ var PollSchema = new Schema({
     required: true
   },
   username: {
-  	type: String,
+  	type: Schema.Types.ObjectId,
+    ref: 'User',
     required: true
   },
   created_at: String,
@@ -23,6 +24,8 @@ var PollSchema = new Schema({
   },
   active: Boolean,
   public: Boolean,
+
+  options: Object,
   votes: Object
 
 });

@@ -7,7 +7,10 @@ var authTypes = ['github', 'twitter', 'facebook', 'google'];
 
 var UserSchema = new Schema({
   name: String,
-  email: { type: String, lowercase: true },
+  email: { 
+    type: String, 
+    lowercase: true 
+  },
   role: {
     type: String,
     default: 'user'
@@ -18,7 +21,10 @@ var UserSchema = new Schema({
   twitter: {},
   github: {},
 
-  polls: [{ type: Schema.Types.ObjectId, ref: 'Story' }]
+  polls: [{ 
+    type: Schema.Types.ObjectId, 
+    ref: 'Poll' 
+  }]
 });
 
 /**
