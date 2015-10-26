@@ -1,12 +1,16 @@
-angular.module('fccApp').controller('newPollCtrl', function ($scope, $http) {
+angular.module('fccApp').controller('newPollCtrl', function ($scope, $http, Auth) {
+
+	$scope.currentUser = Auth.getCurrentUser();
+	console.log($scope.getCurrentUser);
+	$scope.poll = {};
 
 	$scope.register = function(form) {
 
 		$scope.submitted = true;
-		console.log('submitted', form.$valid);
 
 		if (form.$valid) {
-			console.log("valid");
+			$scope.poll.author = $scope.currentUser.username;
+			console.log($scope.poll);
 		}
 
 	};

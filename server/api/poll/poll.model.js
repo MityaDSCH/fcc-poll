@@ -5,25 +5,21 @@ var mongoose = require('mongoose'),
 
 var PollSchema = new Schema({
 
-  name: {
+  title: {
   	type: String,
     required: true
   },
   username: {
-  	type: Schema.Types.ObjectId,
-    ref: 'User',
+  	type: String,
     required: true
   },
   created_at: String,
   updated_at: String,
-
   url: {
     type: String,
     required: true,
     unique: true
   },
-  active: Boolean,
-  public: Boolean,
 
   options: Object,
   votes: Object
