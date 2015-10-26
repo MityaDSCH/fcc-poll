@@ -1,7 +1,11 @@
-.ng-invalid.ng-dirty {
+.ng-invalid.ng-dirty.title {
 	border-color: red;
 }
 
-.ng-valid.ng-dirty {
+.ng-valid.ng-dirty.title {
 	border-color: green;
+}
+
+.option {
+	margin-top: 10px;
 }

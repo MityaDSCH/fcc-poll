@@ -9,10 +9,10 @@
 
       <form class="form" name="form" ng-submit="register(form)" novalidate>
 
-        <div class="form-group" ng-class="{ 'has-success': form.name.$valid && submitted, 'has-error': form.name.$invalid && submitted }">
+        <div class="form-group">
 
           <label>Title</label>
-          <input type="text" name="title" class="form-control" ng-model="poll.title" 
+          <input type="text" name="title" class="form-control title" ng-model="poll.title" 
           required
           ng-minlength="3"/>
 
@@ -25,6 +25,24 @@
 
         </div>
 
+        <div class="form-group">
+          <label>Options</label>
+          <div class="input-group option" ng-repeat="option in poll.options track by $index">
+
+            <input type="text" class="form-control" placeholder="Option" ng-model="option.val" required>
+            <span class="btn btn-danger input-group-addon" ng-click="deleteOption($index)">X</span>
+
+          </div>
+        </div>
+
+        <div>
+          <button class="btn btn-primary btn-sm" ng-click="addOption()">
+            +
+          </button>
+        </div>
+
+        <br/>
+
         <div>
           <button class="btn btn-inverse btn-lg btn-login" type="submit">
             Sign up
@@ -32,7 +50,7 @@
         </div>
         <br/>
 
-        {{form.$valid}}
+        {{poll}}
 
       </form>
 
