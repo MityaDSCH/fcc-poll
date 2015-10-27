@@ -52,10 +52,9 @@ User.find({}).remove(function() {
 Poll.find({}).remove(function() {
   Poll.create({
     title: "Does this work?",
-    username: "admin",
+    author: "admin",
     created_at: Date.now(),
     updated_at: Date.now(),
-    url: "/test-poll",
     options: ["yes", "no"],
     votes: {
       "admin": "yes",

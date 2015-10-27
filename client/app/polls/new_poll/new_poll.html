@@ -2,9 +2,11 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-sm-12">
-      <h1>New poll</h1>
+    <div class='col-sm-3'></div>
+    <div class="col-sm-6">
+      <h1>New Poll</h1>
     </div>
+    <div class='col-sm-3'></div>
     <div class="col-sm-12">
 
       <form class="form" name="form" ng-submit="register(form)" novalidate>
@@ -25,38 +27,35 @@
 
         </div>
 
+        <hr/>
+
         <div class="form-group">
           <label>Options</label>
-          <div class="input-group option" ng-repeat="option in poll.options track by $index">
+          <div class="input-group option" id="option{{$index+1}}" ng-repeat="option in poll.options track by $index">
 
-            <input type="text" class="form-control" placeholder="Option" ng-model="option.val" required>
-            <span class="btn btn-danger input-group-addon" ng-click="deleteOption($index)">X</span>
+            <input type="text" name="options{{$index}}" class="form-control" placeholder="Option {{$index + 1}}" ng-model="poll.options[$index]" required>
+            <span class="btn btn-danger input-group-addon glyphicon glyphicon-remove" ng-click="deleteOption($index)"></span>
 
           </div>
         </div>
 
         <div>
-          <button class="btn btn-primary btn-sm" ng-click="addOption()">
-            +
-          </button>
+          <button class="btn btn-primary btn-sm glyphicon glyphicon-plus" type="button" ng-click="addOption()"></button>
         </div>
 
-        <br/>
+        <hr/>
 
         <div>
           <button class="btn btn-inverse btn-lg btn-login" type="submit">
-            Sign up
+            Submit
           </button>
         </div>
         <br/>
-
-        {{poll}}
 
       </form>
 
     </div>
   </div>
-  <hr>
 </div>
  
 <div ng-include="'components/footer/footer.html'"></div>

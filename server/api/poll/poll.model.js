@@ -9,19 +9,17 @@ var PollSchema = new Schema({
   	type: String,
     required: true
   },
-  username: {
+  author: {
   	type: String,
     required: true
   },
   created_at: String,
   updated_at: String,
-  url: {
-    type: String,
-    required: true,
-    unique: true
-  },
 
-  options: Object,
+  options: {
+    type: Object,
+    required: true
+  },
   votes: Object
 
 });
