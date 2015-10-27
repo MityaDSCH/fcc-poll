@@ -7,8 +7,6 @@ angular.module('fccApp')
 
     $scope.register = function(form) {
 
-      var a = form;
-
       $scope.submitted = true;
 
       if(form.$valid) {

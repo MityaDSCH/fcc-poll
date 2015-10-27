@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('fccApp')
-  .controller('FooterCtrl', function ($scope, $location, Auth) {
+  .controller('FooterCtrl', function ($scope) {
 
     var nameWidth = $('name').css('width');
     var animating = false;
@@ -26,7 +26,7 @@ angular.module('fccApp')
           animating = false;
         }, 1200);
       }, 800);
-    }
+    };
 
     $scope.hideName = function() {
       animating = true;
