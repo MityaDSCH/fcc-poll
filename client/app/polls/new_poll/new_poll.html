@@ -31,7 +31,7 @@
 
         <div class="form-group">
           <label>Options</label>
-          <div class="input-group option" id="option{{$index+1}}" ng-repeat="option in poll.options track by $index">
+          <div class="input-group option" id="option{{$index}}" ng-repeat="option in poll.options track by $index">
 
             <input type="text" name="options{{$index}}" class="form-control" placeholder="Option {{$index + 1}}" ng-model="poll.options[$index]" required>
             <span class="btn btn-danger input-group-addon glyphicon glyphicon-remove" ng-click="deleteOption($index)"></span>

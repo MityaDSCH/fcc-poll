@@ -12,6 +12,7 @@ angular.module('fccApp').controller('newPollCtrl', function ($scope, $http, Auth
 	};
 
 	$scope.deleteOption = function(num) {
+		console.log("delete " + num);
 		if ($scope.poll.options.length > 2) {
 			$('#option' + (num + 1)).remove();
 			$scope.poll.options.splice(num, 1);
