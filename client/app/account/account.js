@@ -15,5 +15,9 @@ angular.module('fccApp')
         templateUrl: 'app/account/settings/settings.html',
         controller: 'SettingsCtrl',
         authenticate: true
+      })
+      .when('/u/:username', {
+        templateUrl: 'app/account/user/user.html',
+        controller: 'userCtrl'
       });
   });
