@@ -14,9 +14,12 @@
         <div class="form-group">
 
           <label>Title</label>
-          <input type="text" name="title" class="form-control title" ng-model="poll.title" 
-          required
-          ng-minlength="3"/>
+          <input type="text" 
+                 name="title" 
+                 class="form-control title" 
+                 ng-model="poll.title" 
+                 required
+                 ng-minlength="3"/>
 
           <p class="help-block" ng-show="form.title.$error.required && submitted">
             A title is required
@@ -33,8 +36,16 @@
           <label>Options</label>
           <div class="input-group option" id="option{{$index}}" ng-repeat="option in poll.options track by $index">
 
-            <input type="text" name="options{{$index}}" class="form-control" placeholder="Option {{$index + 1}}" ng-model="poll.options[$index]" required>
-            <span class="btn btn-danger input-group-addon glyphicon glyphicon-remove" ng-click="deleteOption($index)"></span>
+            <input type="text" 
+                   name="options{{$index}}" 
+                   class="form-control"
+                   id="option-input{{$index}}" 
+                   placeholder="Option {{$index + 1}}" 
+                   ng-model="poll.options[$index]" 
+                   required>
+
+            <span class="btn btn-danger input-group-addon glyphicon glyphicon-remove" 
+                  ng-click="deleteOption($index)"></span>
 
           </div>
         </div>

@@ -12,10 +12,12 @@ angular.module('fccApp').controller('newPollCtrl', function ($scope, $http, Auth
 	};
 
 	$scope.deleteOption = function(num) {
-		console.log("delete " + num);
 		if ($scope.poll.options.length > 2) {
 			$('#option' + (num + 1)).remove();
 			$scope.poll.options.splice(num, 1);
+		} else {
+			console.log($('#option-input' + num));
+			console.log($('#option-input' + num).val(""));
 		}
 	};
 
@@ -26,10 +28,7 @@ angular.module('fccApp').controller('newPollCtrl', function ($scope, $http, Auth
 		if (form.$valid) {
 			$scope.poll.author = $scope.currentUser.username;
 			$http.post('/api/polls', $scope.poll);
-		} else {
-			console.log(form.options);
 		}
-
 	};
 
 });
