@@ -15,9 +15,6 @@ angular.module('fccApp').controller('newPollCtrl', function ($scope, $http, Auth
 		if ($scope.poll.options.length > 2) {
 			$('#option' + (num + 1)).remove();
 			$scope.poll.options.splice(num, 1);
-		} else {
-			console.log($('#option-input' + num));
-			console.log($('#option-input' + num).val(""));
 		}
 	};
 
