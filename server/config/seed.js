@@ -9,7 +9,7 @@ var Thing = require('../api/thing/thing.model');
 var User = require('../api/user/user.model');
 var Poll = require('../api/poll/poll.model');
 
-Thing.find({}).remove(function() {
+Thing.find({}).remove().exec(function() {
   Thing.create({
     name : 'Development Tools',
     info : 'Integration with popular tools such as Bower, Grunt, Karma, Mocha, JSHint, Node Inspector, Livereload, Protractor, Jade, Stylus, Sass, CoffeeScript, and Less.'
@@ -28,10 +28,12 @@ Thing.find({}).remove(function() {
   },{
     name : 'Deployment Ready',
     info : 'Easily deploy your app to Heroku or Openshift with the heroku and openshift subgenerators'
+  }, function() {
+      console.log('finished populating things');
   });
 });
 
-User.find({}).remove(function() {
+User.find({}).remove().exec(function() {
   User.create({
     provider: 'local',
     username: 'test',
@@ -45,20 +47,34 @@ User.find({}).remove(function() {
     password: 'admin'
   }, function() {
       console.log('finished populating users');
-    }
-  );
+  }).then(function(users) {
+    makePoll();
+  });
 });
 
-Poll.find({}).remove(function() {
-  Poll.create({
-    title: "Does this work?",
-    author: "admin",
-    created_at: Date.now(),
-    updated_at: Date.now(),
-    options: ["yes", "no"],
-    votes: {
-      "admin": "yes",
-      "test": "no"
-    }
-  })
-});
+function makePoll() {
+  var parentUser;
+  Poll.find({}).remove().exec(function() {
+    User.findOne({username: 'admin'}).exec()
+      .then(function(user) {
+        parentUser = user;
+        return Poll.create({
+          testPoll: true,
+          title: "Does this work?",
+          author: user._id,
+          created_at: Date.now(),
+          updated_at: Date.now(),
+          options: ["yes", "no"],
+          votes: {
+            "admin": "yes",
+            "test": "no"
+          }
+        });
+      }).then(function(poll) {
+        parentUser.polls.push(poll._id);
+        parentUser.save(function(err) {
+          if (err) console.log(err);
+        })
+      })
+  });
+};

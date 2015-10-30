@@ -1,7 +1,8 @@
 'use strict';
 
 var mongoose = require('mongoose'),
-    Schema = mongoose.Schema;
+    Schema = mongoose.Schema, 
+    User = require('../user/user.model');
 
 var PollSchema = new Schema({
 
@@ -10,7 +11,8 @@ var PollSchema = new Schema({
     required: true
   },
   author: {
-  	type: String,
+  	type: Schema.Types.ObjectId,
+    ref: 'User',
     required: true
   },
   created_at: String,
