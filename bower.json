@@ -15,8 +15,9 @@
     "animate.css": "~3.4.0",
     "font-awesome": ">=4.1.0",
     "lodash": "~2.4.1",
+    "moment": "~2.10.6",
     "Chart.js": "2.0.0-beta"
-  },
+},
   "devDependencies": {
     "angular-mocks": ">=1.2.*",
     "angular-scenario": ">=1.2.*"

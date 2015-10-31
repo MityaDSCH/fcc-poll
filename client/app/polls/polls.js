@@ -7,5 +7,9 @@ angular.module('fccApp')
         templateUrl: 'app/polls/new_poll/new_poll.html',
         controller: 'newPollCtrl',
         authenticate: true
+      })
+      .when('/poll/:id', {
+      	templateUrl: 'app/polls/poll/poll.html',
+      	controller: 'pollCtrl'
       });
   });
