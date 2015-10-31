@@ -16,8 +16,6 @@ angular.module('fccApp').controller('pollCtrl', function ($scope, $http, Auth, $
 		console.log('resize');
 	});
 
-	
-
 	$scope.currentUser = Auth.getCurrentUser();
 
 });
