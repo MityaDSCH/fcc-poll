@@ -9,10 +9,6 @@ angular.module('fccApp')
 
     return {
 
-      getUser: function(username) {
-        console.log(username);
-      },
-
       /**
        * Authenticate user and save token
        *

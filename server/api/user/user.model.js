@@ -46,16 +46,6 @@ UserSchema
     return this._password;
   });
 
-// Public profile information
-UserSchema
-  .virtual('profile')
-  .get(function() {
-    return {
-      'name': this.name,
-      'role': this.role
-    };
-  });
-
 // Non-sensitive info we'll be putting in the token
 UserSchema
   .virtual('token')

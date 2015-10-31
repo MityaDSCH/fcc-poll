@@ -93,6 +93,17 @@ exports.me = function(req, res, next) {
   });
 };
 
+exports.getUser = function(req, res, next) {
+  var name = req.params.username;
+  User.findOne({
+    username: name
+  }, 'polls', function(err, user) {
+    if (err) return next(err);
+    if (!user) return res.status(401).send('Unauthorized');
+    res.json(user);
+  });
+};
+
 /**
  * Authentication callback
  */
