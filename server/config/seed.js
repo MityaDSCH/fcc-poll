@@ -47,9 +47,9 @@ User.find({}).remove().exec(function() {
     password: 'admin'
   }, function() {
       console.log('finished populating users');
-  }).then(function(users) {
+  }).then(function() {
     makePoll();
-  });
+  }); 
 });
 
 function makePoll() {
@@ -66,8 +66,8 @@ function makePoll() {
           updated_at: Date.now(),
           options: ["yes", "no"],
           votes: {
-            "admin": "yes",
-            "test": "no"
+            'admin': "yes",
+            'test': "no"
           }
         });
       }).then(function(poll) {
@@ -77,4 +77,4 @@ function makePoll() {
         })
       })
   });
-};
+}
