@@ -55,6 +55,7 @@ User.find({}).remove().exec(function() {
 function makePoll() {
   var parentUser;
   Poll.find({}).remove().exec(function() {
+    //poll 1
     User.findOne({username: 'admin'}).exec()
       .then(function(user) {
         parentUser = user;
@@ -76,5 +77,27 @@ function makePoll() {
           if (err) console.log(err);
         })
       })
+    //poll 2
+    User.findOne({username: 'admin'}).exec()
+    .then(function(user) {
+      parentUser = user;
+      return Poll.create({
+        testPoll: true,
+        title: "Does this work? 2",
+        author: user._id,
+        created_at: Date.now(),
+        updated_at: Date.now(),
+        options: ["yes", "no"],
+        votes: {
+          'admin': "yes",
+          'test': "no"
+        }
+      });
+    }).then(function(poll) {
+      parentUser.polls.push(poll._id);
+      parentUser.save(function(err) {
+        if (err) console.log(err);
+      })
+    })
   });
 }

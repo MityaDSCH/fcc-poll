@@ -97,8 +97,7 @@ exports.getPolls = function(req, res, next) {
   var name = req.params.username;
   User.find({
     username: name
-  }, 'polls').exec(function(err, polls) {
-    console.log(polls, err);
+  }, 'polls -_id').populate('polls').exec(function(err, polls) {
     if (err) return next(err);
     if (!polls) return res.status(401).send('Not found');
     res.json(polls);
