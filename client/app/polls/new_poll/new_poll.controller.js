@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('fccApp').controller('newPollCtrl', function ($scope, $http, Auth) {
+angular.module('fccApp').controller('newPollCtrl', function ($scope, $http, Auth, $window) {
 
 	$scope.currentUser = Auth.getCurrentUser();
 
@@ -23,7 +23,11 @@ angular.module('fccApp').controller('newPollCtrl', function ($scope, $http, Auth
 		$scope.submitted = true;
 
 		if (form.$valid) {
-			$http.post('/api/polls', $scope.poll);
+			$http.post('/api/polls', $scope.poll).success(function(pollId) {
+				
+				$window.location.href = '/poll/' + pollId;
+				
+			});
 		}
 	};
 
