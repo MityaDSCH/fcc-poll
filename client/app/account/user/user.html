@@ -1,8 +1,22 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
-<h5 ng-repeat="poll in polls">
-	{{poll}}
-	<br/>
-</h1>
+<div class="row">
+	<div class="col-xs-0 col-sm-1 col-md-2 col-lg-3"></div>
+
+	<div class="col-xs-12 col-sm-10 col-md-8 col-lg-6 polls">
+		<h2>Polls</h2>
+		<hr/>
+		<blockquote class="poll" id="option{{$index}}" ng-repeat="poll in polls track by $index">
+			{{poll.title}}
+			<hr/>
+			<div id="buttons" ng-show="isOwner">
+				<span ng-click="deleteBtn($index)" id="delete{{$index}}" class="btn btn-danger input-group-addon glyphicon glyphicon-remove"></span>
+				<span ng-click="editBtn($index)" id="edit{{$index}}" class="btn btn-primary input-group-addon glyphicon glyphicon-edit"></span>
+			</div>
+		</blockquote>
+	</div>
+
+	<div class="col-xs-0 col-sm-1 col-md-2 col-lg-3"></div>
+</div>
 
 <div ng-include="'components/footer/footer.html'"></div>
