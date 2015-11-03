@@ -93,11 +93,12 @@ exports.me = function(req, res, next) {
   });
 };
 
-exports.getUser = function(req, res, next) {
+exports.getPolls = function(req, res, next) {
   var name = req.params.username;
-  User.findOne({
+  User.find({
     username: name
-  }, 'polls').populate('polls').exec(function(err, polls) {
+  }, 'polls').exec(function(err, polls) {
+    console.log(polls, err);
     if (err) return next(err);
     if (!polls) return res.status(401).send('Not found');
     res.json(polls);

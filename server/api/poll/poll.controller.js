@@ -2,6 +2,7 @@
 
 var _ = require('lodash');
 var Poll = require('./poll.model');
+var User = require('../user/user.model');
 
 // Get list of polls
 exports.index = function(req, res) {
@@ -22,9 +23,19 @@ exports.show = function(req, res) {
 
 // Creates a new poll in the DB.
 exports.create = function(req, res) {
+  var pollId = '';
   Poll.create(req.body, function(err, poll) {
     if(err) { return handleError(res, err); }
-    return res.status(201).json(poll);
+    pollId = poll._id;
+  });
+  //Update author's user model with the poll
+  User.findById(req.body.author, function(err, user) {
+    if (err) return handleError(res, err);
+    user.polls.push(pollId);
+    user.save(function(err) {
+      if (err) return validationError(res, err);
+      res.status(200).send('OK');
+    });
   });
 };
 

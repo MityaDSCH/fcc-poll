@@ -23,7 +23,6 @@ angular.module('fccApp').controller('newPollCtrl', function ($scope, $http, Auth
 		$scope.submitted = true;
 
 		if (form.$valid) {
-			$scope.poll.author = $scope.currentUser.username;
 			$http.post('/api/polls', $scope.poll);
 		}
 	};
