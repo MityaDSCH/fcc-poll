@@ -74,10 +74,21 @@ exports.destroy = function(req, res) {
     Poll.findById(req.params.id, function (err, poll) {
       if(err) { return handleError(res, err); }
       if(!poll) { return res.status(404).send('Not Found'); }
+      User.findById(poll.author, function(err, user) {
+        user.polls.forEach(function(pollId, i) {
+          if (pollId === req.params.id) {
+            user.polls.splice(i, 1);
+          }
+        });
+        user.save(function(err) {
+          if (err) return validationError(res, err);
+        });
+      });
       poll.remove(function(err) {
         if(err) { return handleError(res, err); }
         return res.status(204).send('No Content');
       });
+
     });
 
   }

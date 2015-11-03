@@ -2,10 +2,10 @@
 
 angular.module('fccApp').controller('pollCtrl', function ($scope, $http, Auth, $routeParams) {
 
-	var ctx = $("#chart")[0].getContext("2d");
+	var ctx = $('#chart')[0].getContext('2d');
 
 	function resizeCanvas() {
-		var wid = $("#chart-container").width();
+		var wid = $('#chart-container').width();
 		ctx.canvas.width = wid;
 		ctx.canvas.height = wid*4/5;
 	}
