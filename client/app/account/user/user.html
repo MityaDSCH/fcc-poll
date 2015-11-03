@@ -9,9 +9,24 @@
 		<blockquote class="poll" id="option{{$index}}" ng-repeat="poll in polls track by $index">
 			{{poll.title}}
 			<hr/>
-			<div id="buttons" ng-show="isOwner">
-				<span ng-click="deleteBtn($index)" id="delete{{$index}}" class="btn btn-danger input-group-addon glyphicon glyphicon-remove"></span>
-				<span ng-click="editBtn($index)" id="edit{{$index}}" class="btn btn-primary input-group-addon glyphicon glyphicon-edit"></span>
+			<div id="buttons" class="input-group" ng-show="isOwner">
+
+				<span id="delete-prompt{{$index}}" 
+							class="input-group-addon" 
+							ng-show="showPrompt{{$index}}">
+							Delete this poll?
+				</span>
+
+				<span ng-click="deleteBtn($index)" 
+							id="delete{{$index}}" 
+							class="btn btn-danger input-group-addon glyphicon glyphicon-remove">
+				</span>
+
+				<span ng-click="editBtn($index)" 
+							id="edit{{$index}}" 
+							class="btn btn-primary input-group-addon glyphicon glyphicon-edit">
+				</span>
+
 			</div>
 		</blockquote>
 	</div>

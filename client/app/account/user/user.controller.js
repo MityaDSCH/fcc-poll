@@ -12,12 +12,34 @@ angular.module('fccApp').controller('userCtrl', function ($scope, $http, Auth, $
 	});
 
 	$scope.deleteBtn = function(num) {
-		console.log(num);
-		$('#delete' + num).removeClass('glyphicon-remove')
-											.text('Are you sure?');
+
+		if ($scope['showPrompt' + num] === false || $scope['showPrompt' + num] === undefined) {
+			$scope['showPrompt' + num] = true;
+			$('#delete' + num).removeClass('glyphicon-remove glyphicon')
+												.text('Delete');
+			$('#edit' + num).removeClass('glyphicon-edit glyphicon')
+											.text('Cancel');
+		} else {
+			 $http.delete('/api/polls/' + $scope.polls[num]._id);
+			 $scope.polls.splice(num, 1);
+			 //yeah, this is weird, but it resets the next poll from the delete confirmation
+			 $scope.editBtn(num);
+		}
 	};
 
-	//show edit/delete buttons is page belongs to logged in user
+	$scope.editBtn = function(num) {
+		if ($scope['showPrompt' + num] === false) {
+			//edit link
+		} else {
+			$scope['showPrompt' + num] = false;
+			$('#delete' + num).addClass('glyphicon-remove glyphicon')
+												.text('');
+			$('#edit' + num).addClass('glyphicon-edit glyphicon')
+											.text('');
+		}
+	};
+
+	//show edit/delete buttons is page belongs to logged in username
 	$scope.isOwner = Auth.getCurrentUser().username === user;
 
 });
