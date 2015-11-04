@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('fccApp').controller('pollCtrl', function ($scope, $http, Auth, $routeParams) {
+angular.module('fccApp').controller('pollCtrl', function ($scope, $http, Auth) {
 
 	var ctx = $('#chart')[0].getContext('2d');
 

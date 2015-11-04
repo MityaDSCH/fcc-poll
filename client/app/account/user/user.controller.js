@@ -6,7 +6,7 @@ angular.module('fccApp').controller('userCtrl', function ($scope, $http, Auth, $
 
 	var user = $routeParams.username;
 	$scope.polls = [];
-	$scope.isOwner = false
+	$scope.isOwner = false;
 	$http.get('/api/users/' + user + '/polls').success(function(item) {
 		$scope.polls = item[0].polls;
 	});
