@@ -1,4 +1,4 @@
-<canvas id="doughnut" 
+<canvas ng-show="poll.voteTotals.length > 0" id="doughnut" 
 		class="chart chart-doughnut" 
 		chart-data="poll.voteTotals" 
 		chart-labels="poll.voteOptions"
@@ -11,3 +11,4 @@
       tooltipFontSize: 20
     }">
 </canvas>
+<h1 ng-show="poll.voteTotals.length == 0">No Votes Yet!</h1>
