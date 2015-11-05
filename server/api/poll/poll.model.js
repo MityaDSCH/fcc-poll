@@ -18,10 +18,7 @@ var PollSchema = new Schema({
   created_at: String,
   updated_at: String,
 
-  options: {
-    type: Object,
-    required: true
-  },
+  options: Object,
   votes: Object
 
 });
@@ -33,6 +30,13 @@ PollSchema.pre('save', function(next) {
   this.updated_at = curDate;
   if (!this.created_at) {
     this.created_at = curDate;
+  }
+
+  //update options array
+  for (var index in this.votes) {
+    if (this.options.indexOf(this.votes[index]) === -1) {
+      this.options.push(this.votes[index]);
+    }
   }
 
   next();

@@ -68,7 +68,10 @@ function makePoll() {
           options: ["yes", "no"],
           votes: {
             'admin': "yes",
-            'test': "no"
+            'test': "no",
+            'anonymous': "maybe",
+            'anonymous1': "yes",
+            'anonymous2': "no"
           }
         });
       }).then(function(poll) {
