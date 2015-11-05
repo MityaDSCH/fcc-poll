@@ -18,8 +18,9 @@ var PollSchema = new Schema({
   created_at: String,
   updated_at: String,
 
-  options: Object,
-  votes: Object
+  votes: Object, 
+  voteOptions: Object,
+  voteTotals: Object
 
 });
 
@@ -32,10 +33,23 @@ PollSchema.pre('save', function(next) {
     this.created_at = curDate;
   }
 
-  //update options array
-  for (var index in this.votes) {
-    if (this.options.indexOf(this.votes[index]) === -1) {
-      this.options.push(this.votes[index]);
+  //update make arrays the voteOptions and voteTotals with entries for each string 
+  //with a vote, and the total number of votes that string has respectively
+  this.voteOptions = [];
+  this.voteTotals = [];
+  for (var key in this.votes) {
+    var value = this.votes[key];
+    console.log('placing ' + value);
+    var i = this.voteOptions.indexOf(value);
+    if (i === -1) {
+      this.voteOptions.push(value);
+      this.voteTotals[this.voteOptions.length - 1] = 1;
+    } 
+    else if (this.voteTotals[i] === undefined) {
+      this.voteTotals[i] = 1;
+    } 
+    else {
+      this.voteTotals[i]++;
     }
   }
 
