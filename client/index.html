@@ -15,6 +15,7 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(client) app/vendor.css -->
       <!-- bower:css -->
+      <link rel="stylesheet" href="bower_components/angular-chart.js/dist/angular-chart.css" />
       <link rel="stylesheet" href="bower_components/animate.css/animate.css" />
       <!-- endbower -->
     <!-- endbuild -->
@@ -51,6 +52,8 @@
       <!-- bower:js -->
       <script src="bower_components/jquery/dist/jquery.js"></script>
       <script src="bower_components/angular/angular.js"></script>
+      <script src="bower_components/Chart.js/Chart.js"></script>
+      <script src="bower_components/angular-chart.js/dist/angular-chart.js"></script>
       <script src="bower_components/angular-resource/angular-resource.js"></script>
       <script src="bower_components/angular-cookies/angular-cookies.js"></script>
       <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
@@ -58,7 +61,6 @@
       <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
       <script src="bower_components/lodash/dist/lodash.compat.js"></script>
       <script src="bower_components/moment/moment.js"></script>
-      <script src="bower_components/Chart.js/Chart.js"></script>
       <!-- endbower -->
     <!-- endbuild -->
 
@@ -79,11 +81,11 @@
       <script src="app/polls/polls.js"></script>
       <script src="components/auth/auth.service.js"></script>
       <script src="components/auth/user.service.js"></script>
-      <script src="components/chart/chart.controller.js"></script>
       <script src="components/footer/footer.controller.js"></script>
       <script src="components/modal/modal.service.js"></script>
       <script src="components/mongoose-error/mongoose-error.directive.js"></script>
       <script src="components/navbar/navbar.controller.js"></script>
+      <script src="components/pollchart/pollchart.directive.js"></script>
       <!-- endinjector -->
     <!-- endbuild -->
   </body>

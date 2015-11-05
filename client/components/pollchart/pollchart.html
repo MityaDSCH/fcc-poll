@@ -1,4 +1,4 @@
-<div class="container" ng-controller="ChartCtrl">
+<div class="container">
 
   <div class="row chart-row">
 
@@ -7,7 +7,11 @@
   <div class="col-sm-10 col-md-8 col-lg-6" id="chart-container">
   	<h1>{{poll.title}}</h1>
   	<br/>
-    <canvas id="chart{{pollId}}" width="100px" height="100px"></canvas>
+    <canvas id="doughnut" 
+    		class="chart chart-doughnut" 
+    		chart-data="data" 
+    		chart-labels="labels">
+	</canvas>
   </div>
 
   <div class="col-sm-1 col-md-2 col-lg-3"></div>
