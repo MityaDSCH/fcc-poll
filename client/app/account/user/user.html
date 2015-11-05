@@ -9,6 +9,9 @@
 		<blockquote class="poll" id="option{{$index}}" ng-repeat="poll in polls track by $index">
 			<h2><a href="{{'/poll/' + poll._id}}">{{poll.title}}</a></h2>
 			<hr/>
+			<br/>
+			<pollchart></pollchart>
+			<br/>
 			<div id="buttons" class="input-group" ng-show="isOwner">
 
 				<span id="delete-prompt{{$index}}" 
