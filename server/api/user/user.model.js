@@ -23,8 +23,6 @@ var UserSchema = new Schema({
   hashedPassword: String,
   provider: String,
   salt: String,
-  twitter: {},
-  github: {},
 
   polls: [{ 
     type: Schema.Types.ObjectId, 
