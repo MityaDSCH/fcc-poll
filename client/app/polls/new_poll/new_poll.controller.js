@@ -4,17 +4,20 @@ angular.module('fccApp').controller('newPollCtrl', function ($scope, $http, Auth
 
 	$scope.currentUser = Auth.getCurrentUser();
 
-	$scope.poll = {author: $scope.currentUser._id};
-	$scope.poll.options = ['', ''];
-
+	$scope.poll = {
+		author: $scope.currentUser._id,
+		votes: {}
+	};
+	$scope.poll.voteOptions = ['', ''];
+	
 	$scope.addOption = function() {
-		$scope.poll.options.push('');
+		$scope.poll.voteOptions.push('');
 	};
 
 	$scope.deleteOption = function(num) {
-		if ($scope.poll.options.length > 2) {
+		if ($scope.poll.voteOptions.length > 2) {
 			$('#option' + (num + 1)).remove();
-			$scope.poll.options.splice(num, 1);
+			$scope.poll.voteOptions.splice(num, 1);
 		}
 	};
 

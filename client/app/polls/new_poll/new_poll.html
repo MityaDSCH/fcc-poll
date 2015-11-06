@@ -34,14 +34,14 @@
 
         <div class="form-group">
           <label>Options</label>
-          <div class="input-group option" id="option{{$index}}" ng-repeat="option in poll.options track by $index">
+          <div class="input-group option" id="option{{$index}}" ng-repeat="option in poll.voteOptions track by $index">
 
             <input type="text" 
                    name="options{{$index}}" 
                    class="form-control"
                    id="option-input{{$index}}" 
                    placeholder="Option {{$index + 1}}" 
-                   ng-model="poll.options[$index]" 
+                   ng-model="poll.voteOptions[$index]" 
                    required>
 
             <span class="btn btn-danger input-group-addon glyphicon glyphicon-remove" 

@@ -35,19 +35,18 @@ PollSchema.pre('save', function(next) {
 
   //update make arrays the voteOptions and voteTotals with entries for each string 
   //with a vote, and the total number of votes that string has respectively
+
   this.voteTotals = [];
-  this.voteOptions = this.voteOptions || [];
+  for (var i = 0; i < this.voteOptions.length; i++) {
+    this.voteTotals.push(0);
+  }
+
   for (var key in this.votes) {
     var value = this.votes[key];
     var i = this.voteOptions.indexOf(value);
-    if (i === -1) {
-      this.voteOptions.push(value);
-      this.voteTotals[this.voteOptions.length - 1] = 1;
-    } 
-    else if (this.voteTotals[i] === undefined) {
+    if (this.voteTotals[i] === undefined) {
       this.voteTotals[i] = 1;
-    } 
-    else {
+    } else {
       this.voteTotals[i]++;
     }
   }

@@ -65,7 +65,7 @@ function makePoll() {
           author: user._id,
           created_at: Date.now(),
           updated_at: Date.now(),
-          options: ["yes", "no"],
+          voteOptions: ["yes", "no", "maybe"],
           votes: {
             'admin': "yes",
             'test': "no",
@@ -90,7 +90,7 @@ function makePoll() {
         author: user._id,
         created_at: Date.now(),
         updated_at: Date.now(),
-        options: ["yes", "no"],
+        voteOptions: ["yes", "no"],
         votes: {
           'admin': "yes",
           'test': "no"

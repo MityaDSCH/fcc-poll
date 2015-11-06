@@ -24,7 +24,8 @@ angular.module('fccApp').controller('pollCtrl', function ($scope, $http, Auth, $
 	}).then(function() {
 
 		$scope.data = $scope.poll.voteTotals;
-		$scope.labels = $scope.poll.voteOptions;
+		$scope.labels = $scope.poll.voteOptions
+		$scope.poll.votes = $scope.poll.votes || {};
 
 		//activate voted button if user has already voted
 		if ($scope.userId != "Anonymous") {
