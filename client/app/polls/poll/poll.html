@@ -9,13 +9,34 @@
 
 	  	<h1>{{poll.title}}</h1>
 	  	<br/>
+	  	<br/>
 	    <pollchart></pollchart>
-	    <div> 
+	    <br/>
+    	<form class="form text-center" name="vote-form" ng-submit="submitVote(userVote)" novalidate>
 
-	    	
-	    
-	    </div>
-
+	    	<div class="input-group">
+    			<div class="input-group-btn">
+	    			<span class="btn btn-lg btn-default option-btn"
+	    				  id="option-{{option}}" 
+	    				  type="button" 
+	    				  ng-repeat="option in poll.voteOptions"
+	    				  ng-class="{'active': userVote === option}"
+	    				  ng-click="setVote(option)">
+	    				  {{option}}
+	    			</span>
+    			</div>
+	    		<input type="text" 
+	    			   class="form-control" 
+	    			   placeholder="Input your own option..."
+	    			   ng-show="userId !== 'Anonymous'">
+    			{{option}}
+	    	</div>
+	    	<br/>
+	    	<br/>
+	    	<button class="btn btn-lg btn-primary" type="submit">
+				Submit
+			</button>
+    	</form>
 	  </div
 	  <div class="col-xs-0 col-sm-1 col-md-2 col-lg-3"></div>
 
