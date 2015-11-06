@@ -39,7 +39,6 @@ PollSchema.pre('save', function(next) {
   this.voteTotals = [];
   for (var key in this.votes) {
     var value = this.votes[key];
-    console.log('placing ' + value);
     var i = this.voteOptions.indexOf(value);
     if (i === -1) {
       this.voteOptions.push(value);
