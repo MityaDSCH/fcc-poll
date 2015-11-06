@@ -35,8 +35,8 @@ PollSchema.pre('save', function(next) {
 
   //update make arrays the voteOptions and voteTotals with entries for each string 
   //with a vote, and the total number of votes that string has respectively
-  this.voteOptions = [];
   this.voteTotals = [];
+  this.voteOptions = this.voteOptions || [];
   for (var key in this.votes) {
     var value = this.votes[key];
     var i = this.voteOptions.indexOf(value);
