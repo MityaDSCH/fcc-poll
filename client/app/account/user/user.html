@@ -26,8 +26,9 @@
 				</span>
 
 				<span ng-click="editBtn($index)" 
-							id="edit{{$index}}" 
-							class="btn btn-primary input-group-addon glyphicon glyphicon-edit">
+					  id="edit{{$index}}" 
+					  class="btn btn-primary input-group-addon glyphicon glyphicon-edit"
+					  ng-show="showPrompt{{$index}}">
 				</span>
 
 			</div>

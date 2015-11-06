@@ -1,7 +1,3 @@
-.thing-form {
-    margin: 20px 0;
-}
-
 #banner {
     border-bottom: none;
     margin-top: -20px;
@@ -13,31 +9,22 @@
     letter-spacing: -1px;
 }
 
-.row {
-    background-color: #999;
-}
-
 .hero-unit {
+    height: 70vh;
     position: relative;
     padding: 30px 15px;
-    color: #215F1E;
+    color: black;
     text-align: center;
     text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
-    background: #457E86;
 }
 
-#features {
-    padding-top: 20px;
-}
-
-#feature-description {
-    padding-top: 20px;
-}
-
-.thing-link {
-    color: black;
+#title {
+    padding-top: 15vh;
 }
 
 .navbar-text {
   margin-left: 15px;
+}
+.row {
+    background-color: #999;
 }

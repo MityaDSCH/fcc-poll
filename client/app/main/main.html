@@ -1,31 +1,11 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
 <header class="hero-unit" id="banner">
-  <div class="container">
+  <div id="title" class="container">
     <h1>Fcc-poll</h1>
-    <p class="lead">Vote on things I guess</p>
+    <p class="lead">Vote on things</p>
     <img src="https://s3.amazonaws.com/freecodecamp/favicons/favicon-96x96.png" alt="I'm Yeoman">
   </div>
 </header>
-
-<div class="container" id="features">
-  <div class="row">
-    <div class="col-lg-12">
-
-      <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="thing in awesomeThings">
-        <li ng-class="{active: thing === active}">
-          <a class="thing-link" ng-click="makeActive()">{{thing.name}}</a>
-        </li>
-      </ul>
-
-    </div>
-  </div>
-
-  <div id="feature-description" class="row" ng-show="active">
-    <div class="col-lg-12">
-      <blockquote>{{active.info}}</blockquote>
-    </div>
-  </div>
-</div>
 
 <div ng-include="'components/footer/footer.html'"></div>
