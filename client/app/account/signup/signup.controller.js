@@ -1,7 +1,8 @@
 'use strict';
  
 angular.module('fccApp')
-  .controller('SignupCtrl', function ($scope, Auth, $location, $window) {
+  .controller('SignupCtrl', function ($rootScope, $scope, Auth, $location, $window) {
+    $rootScope.pageTitle = 'Sign Up';
     $scope.user = {};
     $scope.errors = {};
 

@@ -54,4 +54,5 @@ angular.module('fccApp', [
         }
       });
     });
+    $rootScope.pageTitle = "Fcc Poll";
   });

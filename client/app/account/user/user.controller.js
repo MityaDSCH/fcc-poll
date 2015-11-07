@@ -1,10 +1,11 @@
 'use strict';
 
-angular.module('fccApp').controller('userCtrl', function ($scope, $http, Auth, $routeParams) {
-
+angular.module('fccApp').controller('userCtrl', function ($rootScope, $scope, $http, Auth, $routeParams) {
+ 
 	$scope.currentUser = Auth.getCurrentUser();
 
-	var user = $routeParams.username;
+	var user = $routeParams.username
+    $rootScope.pageTitle = user;
 	$scope.polls = [];
 	$scope.isOwner = false;
 	$http.get('/api/users/' + user + '/polls').success(function(item) {

@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('fccApp')
-  .controller('MainCtrl', function ($scope, $http) {
+  .controller('MainCtrl', function ($rootScope, $scope, $http) {
+    $rootScope.pageTitle = 'Fcc Poll';
     $scope.awesomeThings = [];
 
     $http.get('/api/things').success(function(awesomeThings) {

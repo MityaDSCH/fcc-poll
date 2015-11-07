@@ -1,8 +1,9 @@
 'use strict';
 
 angular.module('fccApp')
-  .controller('AdminCtrl', function ($scope, $http, Auth, User) {
-
+  .controller('AdminCtrl', function ($rootScope, $scope, $http, Auth, User) {
+    
+    $rootScope.pageTitle = 'Administrative Controls';
     // Use the User $resource to fetch all users
     $scope.users = User.query();
 

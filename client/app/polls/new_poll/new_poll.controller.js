@@ -1,6 +1,8 @@
 'use strict';
 
-angular.module('fccApp').controller('newPollCtrl', function ($scope, $http, Auth, $window) {
+angular.module('fccApp').controller('newPollCtrl', function ($rootScope, $scope, $http, Auth, $window) {
+
+	$rootScope.pageTitle = 'New Poll';
 
 	$scope.currentUser = Auth.getCurrentUser();
 

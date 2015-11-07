@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('fccApp')
-  .controller('SettingsCtrl', function ($scope, User, Auth) {
+  .controller('SettingsCtrl', function ($rootScope, $scope, User, Auth) {
+    $rootScope.pageTitle = 'Settings';
     $scope.errors = {};
 
     $scope.changePassword = function(form) {
