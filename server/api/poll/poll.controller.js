@@ -27,14 +27,15 @@ exports.create = function(req, res) {
   Poll.create(req.body, function(err, poll) {
     if(err) { return handleError(res, err); }
     pollId = poll._id;
-  });
-  //Update author's user model with the poll
-  User.findById(req.body.author, function(err, user) {
-    if (err) return handleError(res, err);
-    user.polls.push(pollId);
-    user.save(function(err) {
-      if (err) return validationError(res, err);
-      res.status(200).send(pollId);
+  }).then(function() {
+    //Update author's user model with the poll
+    User.findById(req.body.author, function(err, user) {
+      if (err) return handleError(res, err);
+      user.polls.push(pollId);
+      user.save(function(err) {
+        if (err) return validationError(res, err);
+        res.status(200).send(pollId);
+      });
     });
   });
 };
@@ -43,9 +44,9 @@ exports.create = function(req, res) {
 exports.update = function(req, res) {
   if(req.body._id) { delete req.body._id; }
   Poll.findById(req.params.id, function (err, poll) {
+    console.log(err);
     if (err) { return handleError(res, err); }
     if(!poll) { return res.status(404).send('Not Found'); }
-    console.log(poll, req.body);
     var updated = _.extend(poll, req.body);
     updated.save(function (err) {
       console.log(err);
@@ -57,42 +58,26 @@ exports.update = function(req, res) {
 
 // Deletes a poll from the DB.
 exports.destroy = function(req, res) {
-  //if delete path is /all remove all polls
-  if (req.params.id === "all") {
-    console.log("delete all");
-    Poll.find({}, function(err, polls) {
-      if(err) { return handleError(res, err); }
-      polls.forEach(function(ele) {
-        ele.remove(function(err) {
-          if(err) { return handleError(res, err); }
-          return res.status(204).send('No Content');
-        });
+
+  Poll.findById(req.params.id, function (err, poll) {
+    if(err) { return handleError(res, err); }
+    if(!poll) { return res.status(404).send('Not Found'); }
+    User.findById(poll.author, function(err, user) {
+      user.polls.forEach(function(pollId, i) {
+        if (pollId === req.params.id) {
+          user.polls.splice(i, 1);
+        }
+      });
+      user.save(function(err) {
+        if (err) return validationError(res, err);
       });
     });
-  } else {
-
-    //original delete by id
-    Poll.findById(req.params.id, function (err, poll) {
+    poll.remove(function(err) {
       if(err) { return handleError(res, err); }
-      if(!poll) { return res.status(404).send('Not Found'); }
-      User.findById(poll.author, function(err, user) {
-        user.polls.forEach(function(pollId, i) {
-          if (pollId === req.params.id) {
-            user.polls.splice(i, 1);
-          }
-        });
-        user.save(function(err) {
-          if (err) return validationError(res, err);
-        });
-      });
-      poll.remove(function(err) {
-        if(err) { return handleError(res, err); }
-        return res.status(204).send('No Content');
-      });
-
+      return res.status(204).send('No Content');
     });
 
-  }
+  });
 };
 
 function handleError(res, err) {

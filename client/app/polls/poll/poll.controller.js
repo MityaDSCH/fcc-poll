@@ -3,7 +3,7 @@
 angular.module('fccApp').controller('pollCtrl', function ($rootScope, $scope, $http, Auth, $routeParams) {
 
 	$scope.user = Auth.getCurrentUser();
-	$scope.userId = $scope.user.username || 'Anonymous - ' + Date.now() + ' - ' + Math.random()*Math.pow(10,16);
+	$scope.userId = $scope.user.username || 'Anonymous - ' + Date.now() + ' - ' + Math.random()*Math.pow(10,17);
 	$scope.loggedIn = Auth.isLoggedIn();
 
 	$scope.userVote = '';
